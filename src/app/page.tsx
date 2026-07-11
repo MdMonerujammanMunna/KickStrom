@@ -13,10 +13,10 @@ export default function Home() {
 
       <HomePageBanner />
       <FeatureBar />
-      <BrandMarquee />
       <SeasonBanner />
       <AboutSection />
       <FAQSection />
+      <BrandMarquee />
     </>
   );
 }
