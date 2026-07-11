@@ -15,13 +15,13 @@ export default function Navbar() {
         { name: "Contact", href: "/contact" },
     ];
     // Log in Route :- 
-    const navLinks2 = [
-        { name: "Home", href: "/" },
-        { name: "Products", href: "/Products" },
-        { name: "Categories", href: "/Categories" },
-        { name: "Orders", href: "/Orders" },
-        { name: "Dashboard", href: "/Dashboard" },
-    ]
+    // const navLinks2 = [
+    //     { name: "Home", href: "/" },
+    //     { name: "Products", href: "/Products" },
+    //     { name: "Categories", href: "/Categories" },
+    //     { name: "Orders", href: "/Orders" },
+    //     { name: "Dashboard", href: "/Dashboard" },
+    // ]
 
     // Search
     // Cart
