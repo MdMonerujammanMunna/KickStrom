@@ -5,9 +5,13 @@ import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import Image from "next/image";
 import { useAuth } from "@/context/AuthContext";
+import { Avatar, AvatarImage } from "../ui/avatar";
+import { Popover, PopoverContent, PopoverHeader, PopoverTrigger } from "../ui/popover";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function Navbar() {
     const { user, logout } = useAuth();
+    const UserName = user?.displayName
     const [open, setOpen] = useState(false);
     // Log out Route
 
@@ -48,12 +52,46 @@ export default function Navbar() {
                 {/* Desktop Buttons */}
                 {
                     user ?
-                        <button
-                            onClick={logout}
-                            className="hidden md:flex cursor-pointer rounded-lg bg-(--Primary-Color) px-5 py-2 text-sm font-semibold text-white transition hover:bg-red-700"
-                        >
-                            Log Out
-                        </button>
+                        <>
+                            <div className="hidden md:flex">
+                                <Popover>
+                                    <PopoverTrigger className="border-none" render={
+                                        <button>
+                                            <Avatar size="lg">
+                                                <AvatarImage
+                                                    src="https://github.com/shadcn.png"
+                                                    alt="@shadcn"
+                                                    className="grayscale"
+                                                />
+                                            </Avatar>
+                                        </button>
+
+                                    } />
+                                    <PopoverContent align="start">
+                                        <PopoverHeader>
+                                            <Avatar size="lg" className={"flex items-center gap-3"}>
+                                                <AvatarImage
+                                                    src="https://github.com/shadcn.png"
+                                                    alt="@shadcn"
+                                                    className="grayscale border-none"
+                                                />
+                                                <div className="">
+                                                    <h1 className="text-[17px] text-nowrap">{UserName}</h1>
+                                                    <p className="text-xs">User</p>
+                                                </div>
+                                            </Avatar>
+                                            <button
+                                                onClick={logout}
+                                                className="hidden md:flex cursor-pointer rounded-full items-center gap-3 justify-center bg-(--Primary-Color) p-2 mt-2 text-white transition hover:bg-red-700"
+                                            >
+                                                Log Out
+                                                <FaSignOutAlt size={15} />
+                                            </button>
+                                        </PopoverHeader>
+                                    </PopoverContent>
+                                </Popover>
+                            </div>
+                        </>
                         :
                         <div className="hidden items-center gap-3 md:flex">
                             <Link
