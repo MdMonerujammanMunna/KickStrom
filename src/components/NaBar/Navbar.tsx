@@ -14,13 +14,20 @@ export default function Navbar() {
     const UserName = user?.displayName
     const [open, setOpen] = useState(false);
     // Log out Route
+    const navLinks = user
+        ? [
+            { name: "Home", href: "/" },
+            { name: "Products", href: "/Products" },
+            { name: "Dashboard", href: "/Dashboard" },
+            { name: "Categories", href: "/Categories" },
+            { name: "Deals Zone ", href: "/Deals Zone " },
+        ]
+        : [
+            { name: "Home", href: "/" },
+            { name: "Products", href: "/Products" },
+            { name: "Contact", href: "/Contact" },
+        ];
 
-    const navLinks = [
-        { name: "Home", href: "/" },
-        { name: "Products", href: "/Products" },
-        { name: "Categories", href: "/Categories" },
-        { name: "Contact", href: "/contact" },
-    ];
     // Search
     // Cart
     // Profile (Dropdown)
