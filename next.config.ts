@@ -7,23 +7,16 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-
-      {
-        protocol: "https",
-        hostname: "www.magnific.com",
+        hostname: "**",
+        pathname: "/**",
       },
       {
-        protocol: "https",
-        hostname: "cdn.pixabay.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.pexels.com",
+        protocol: "http",
+        hostname: "**",
+        pathname: "/**",
       },
     ],
-  },
+  }
 };
 
 export default nextConfig;

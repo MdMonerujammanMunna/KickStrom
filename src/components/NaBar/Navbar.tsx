@@ -12,7 +12,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const pathname = usePathname();
-    console.log(pathname)
+    // console.log(pathname)
     const { user, logout } = useAuth();
     const UserName = user?.displayName
     const [open, setOpen] = useState(false);
