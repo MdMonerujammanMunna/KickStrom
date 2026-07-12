@@ -7,7 +7,7 @@ import { FcGoogle } from "react-icons/fc";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
-
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 type ConditionProps = {
     valid: boolean;
@@ -58,6 +58,16 @@ export default function SignUpPage() {
         catch (error: any) {
             console.log(error.message);
         }
+    };
+
+
+
+
+    const provider = new GoogleAuthProvider();
+
+    const handleGoogleLogin = async () => {
+        await signInWithPopup(auth, provider);
+        router.push("/");
     };
 
     // 
@@ -263,6 +273,7 @@ export default function SignUpPage() {
                             </div>
 
                             <button
+                                onClick={handleGoogleLogin}
                                 type="button"
                                 className="cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-gray-700 py-3 font-medium text-white hover:bg-gray-800"
                             >
@@ -285,6 +296,6 @@ export default function SignUpPage() {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     );
 }

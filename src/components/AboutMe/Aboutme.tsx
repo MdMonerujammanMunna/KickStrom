@@ -4,7 +4,7 @@ import { ArrowRight, ShieldCheck, Trophy, Truck } from "lucide-react";
 
 export default function AboutSection() {
     return (
-        <section className="bg-[#030712] py-24">
+        <section className="bg-[#030712] py-24 container mx-auto">
             <div className="mx-auto grid max-w-7xl items-center gap-16 px-6 lg:grid-cols-2">
 
                 {/* Left Image */}

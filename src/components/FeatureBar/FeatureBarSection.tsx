@@ -30,8 +30,8 @@ const features = [
 
 export default function FeatureBar() {
     return (
-        <section className="bg-[#0B1220] border-y border-white/10">
-            <div className="mx-auto grid max-w-7xl grid-cols-2 divide-y divide-white/10 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
+        <section className="bg-[#0B1220] border-y border-white/10 container mx-auto">
+            <div className="grid  grid-cols-2 divide-y divide-white/10 md:grid-cols-2 md:divide-x md:divide-y-0 lg:grid-cols-4">
                 {features.map(({ icon: Icon, title, desc }) => (
                     <div
                         key={title}

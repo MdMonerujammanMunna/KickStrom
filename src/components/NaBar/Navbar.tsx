@@ -8,29 +8,39 @@ import { useAuth } from "@/context/AuthContext";
 import { Avatar, AvatarImage } from "../ui/avatar";
 import { Popover, PopoverContent, PopoverHeader, PopoverTrigger } from "../ui/popover";
 import { FaSignOutAlt } from "react-icons/fa";
+import { usePathname } from "next/navigation";
 
 export default function Navbar() {
+    const pathname = usePathname();
     const { user, logout } = useAuth();
     const UserName = user?.displayName
     const [open, setOpen] = useState(false);
     // Log out Route
-    const navLinks = user
+    const navLinkso = user
         ? [
             { name: "Home", href: "/" },
             { name: "Products", href: "/Products" },
             { name: "Dashboard", href: "/Dashboard" },
-            { name: "Categories", href: "/Categories" },
-            { name: "Deals Zone ", href: "/Deals Zone " },
+            { name: "Deals Zone ", href: "/DealsZone " },
+            { name: "Contact", href: "/Contact" },
         ]
-        : [
+        :
+        [
             { name: "Home", href: "/" },
             { name: "Products", href: "/Products" },
             { name: "Contact", href: "/Contact" },
         ];
 
-    // Search
-    // Cart
-    // Profile (Dropdown)
+
+    const navLinks = (pathname.includes("/Dashboard")) ? [
+        { name: "Add New", href: "/Dashboard/AddNew" },
+        { name: "Manage", href: "/Dashboard/Manage" },
+    ]
+        :
+        navLinkso
+
+
+
     return (
         <div className="sticky top-0 z-50 border-b border-white/10 bg-[#030712]/80 backdrop-blur-xl">
             <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">

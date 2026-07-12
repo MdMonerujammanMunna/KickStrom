@@ -3,10 +3,11 @@
 import { useState } from "react";
 import { Eye, EyeOff, CheckCircle2, XCircle } from "lucide-react";
 import Link from "next/link";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { FirebaseError } from "firebase/app";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
+import { FcGoogle } from "react-icons/fc";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -32,7 +33,12 @@ export default function SignInPage() {
 
     // 
 
+    const provider = new GoogleAuthProvider();
 
+    const handleGoogleLogin = async () => {
+        await signInWithPopup(auth, provider);
+        router.push("/");
+    };
 
 
 
@@ -212,10 +218,13 @@ export default function SignInPage() {
                         </span>
                     </div>
 
+
                     <button
+                        onClick={handleGoogleLogin}
                         type="button"
-                        className="w-full rounded-xl border border-gray-700 py-3 font-medium text-white transition hover:bg-gray-800"
+                        className="cursor-pointer flex w-full items-center justify-center gap-3 rounded-xl border border-gray-700 py-3 font-medium text-white hover:bg-gray-800"
                     >
+                        <FcGoogle size={22} />
                         Continue with Google
                     </button>
 

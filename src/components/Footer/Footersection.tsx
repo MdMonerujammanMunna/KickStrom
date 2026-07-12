@@ -24,8 +24,8 @@ const socials = [
 
 export default function Footer() {
     return (
-        <footer className="border-t border-white/10 bg-[#030712] text-white">
-            <div className="mx-auto max-w-7xl px-6 py-16">
+        <footer className="border-t border-white/10 bg-[#030712] text-white container mx-auto">
+            <div className=" px-10 py-16">
                 <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
 
                     {/* Logo */}
