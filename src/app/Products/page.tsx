@@ -18,14 +18,18 @@ interface Product {
     discount: number;
     stock: number;
     description: string;
+    descriptionShort: string;
 }
 
 export default function AllProducts() {
     const [search, setSearch] = useState("");
     const [category, setCategory] = useState("All");
     const [priceRange, setPriceRange] = useState("All");
+    const [sortBy, setSortBy] = useState("featured");
     const [products, setProducts] = useState<Product[]>([]);
     const [loading, setLoading] = useState(true);
+    const [currentPage, setCurrentPage] = useState(1);
+    const productsPerPage = 8;
 
     useEffect(() => {
         const productsRef = ref(db, "products");
@@ -56,7 +60,7 @@ export default function AllProducts() {
     }, []);
 
     const filteredProducts = useMemo(() => {
-        return products.filter((product) => {
+        const filtered = products.filter((product) => {
             const matchSearch = product.name
                 .toLowerCase()
                 .includes(search.toLowerCase());
@@ -76,7 +80,39 @@ export default function AllProducts() {
 
             return matchSearch && matchCategory && matchPrice;
         });
-    }, [products, search, category, priceRange]);
+
+        const sorted = [...filtered];
+
+        switch (sortBy) {
+            case "price-low":
+                sorted.sort((a, b) => a.price - b.price);
+                break;
+            case "price-high":
+                sorted.sort((a, b) => b.price - a.price);
+                break;
+            case "name-az":
+                sorted.sort((a, b) => a.name.localeCompare(b.name));
+                break;
+            case "name-za":
+                sorted.sort((a, b) => b.name.localeCompare(a.name));
+                break;
+            default:
+                break;
+        }
+
+        return sorted;
+    }, [products, search, category, priceRange, sortBy]);
+
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    const validCurrentPage = Math.min(currentPage, totalPages || 1);
+
+    const paginatedProducts = useMemo(() => {
+        const startIndex = (validCurrentPage - 1) * productsPerPage;
+        return filteredProducts.slice(startIndex, startIndex + productsPerPage);
+    }, [filteredProducts, validCurrentPage]);
+
+    const startItem = filteredProducts.length === 0 ? 0 : (validCurrentPage - 1) * productsPerPage + 1;
+    const endItem = Math.min(validCurrentPage * productsPerPage, filteredProducts.length);
 
     return (
         <section className="bg-slate-950  py-20">
@@ -86,7 +122,7 @@ export default function AllProducts() {
                 </h1>
 
                 {/* Search & Filters */}
-                <div className="grid gap-4 md:grid-cols-3 mb-10">
+                <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-10">
                     <div className="relative">
                         <Search
                             className="absolute left-3 top-3 text-gray-400"
@@ -97,14 +133,20 @@ export default function AllProducts() {
                             type="text"
                             placeholder="Search product..."
                             value={search}
-                            onChange={(e) => setSearch(e.target.value)}
+                            onChange={(e) => {
+                                setSearch(e.target.value);
+                                setCurrentPage(1);
+                            }}
                             className="w-full bg-slate-900 border border-slate-700 rounded-lg pl-10 pr-4 py-3 text-white outline-none focus:border-red-500"
                         />
                     </div>
 
                     <select
                         value={category}
-                        onChange={(e) => setCategory(e.target.value)}
+                        onChange={(e) => {
+                            setCategory(e.target.value);
+                            setCurrentPage(1);
+                        }}
                         className="bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white"
                     >
                         <option>All</option>
@@ -116,13 +158,31 @@ export default function AllProducts() {
 
                     <select
                         value={priceRange}
-                        onChange={(e) => setPriceRange(e.target.value)}
+                        onChange={(e) => {
+                            setPriceRange(e.target.value);
+                            setCurrentPage(1);
+                        }}
                         className="bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white"
                     >
                         <option value="All">All Prices</option>
                         <option value="0-50">Under $50</option>
                         <option value="50-100">$50 - $100</option>
                         <option value="100+">Above $100</option>
+                    </select>
+
+                    <select
+                        value={sortBy}
+                        onChange={(e) => {
+                            setSortBy(e.target.value);
+                            setCurrentPage(1);
+                        }}
+                        className="bg-slate-900 border border-slate-700 rounded-lg px-4 py-3 text-white"
+                    >
+                        <option value="featured">Featured</option>
+                        <option value="price-low">Price: Low to High</option>
+                        <option value="price-high">Price: High to Low</option>
+                        <option value="name-az">Name: A-Z</option>
+                        <option value="name-za">Name: Z-A</option>
                     </select>
                 </div>
 
@@ -134,8 +194,17 @@ export default function AllProducts() {
                     </div>
                 ) : (
                     <>
+                        <div className="flex items-center justify-between text-sm text-slate-400 mb-6">
+                            <p>
+                                Showing {startItem}-{endItem} of {filteredProducts.length} products
+                            </p>
+                            <p>
+                                Page {currentPage} of {totalPages || 1}
+                            </p>
+                        </div>
+
                         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-                            {filteredProducts.map((product) => (
+                            {paginatedProducts.map((product) => (
                                 <div
                                     key={product.id}
                                     className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-red-500 hover:-translate-y-1 duration-300 group"
@@ -174,7 +243,7 @@ export default function AllProducts() {
                                         </h2>
 
                                         <p className="text-slate-400 text-sm line-clamp-2">
-                                            {product.description}
+                                            {product.descriptionShort}
                                         </p>
 
                                         <div className="flex items-center gap-3">
@@ -199,6 +268,39 @@ export default function AllProducts() {
                                 </div>
                             ))}
                         </div>
+
+                        {filteredProducts.length > productsPerPage && (
+                            <div className="flex flex-wrap items-center justify-center gap-2 mt-10">
+                                <button
+                                    onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
+                                    disabled={validCurrentPage === 1}
+                                    className="px-4 py-2 rounded-lg border border-slate-700 bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-500"
+                                >
+                                    Previous
+                                </button>
+
+                                {Array.from({ length: totalPages }, (_, index) => index + 1).map((page) => (
+                                    <button
+                                        key={page}
+                                        onClick={() => setCurrentPage(page)}
+                                        className={`px-3 py-2 rounded-lg border ${validCurrentPage === page
+                                            ? "border-red-500 bg-red-600 text-white"
+                                            : "border-slate-700 bg-slate-900 text-slate-300 hover:border-red-500"
+                                            }`}
+                                    >
+                                        {page}
+                                    </button>
+                                ))}
+
+                                <button
+                                    onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
+                                    disabled={validCurrentPage === totalPages}
+                                    className="px-4 py-2 rounded-lg border border-slate-700 bg-slate-900 text-white disabled:opacity-50 disabled:cursor-not-allowed hover:border-red-500"
+                                >
+                                    Next
+                                </button>
+                            </div>
+                        )}
 
                         {filteredProducts.length === 0 && (
                             <div className="text-center mt-20">

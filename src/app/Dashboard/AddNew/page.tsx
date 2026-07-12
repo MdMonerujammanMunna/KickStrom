@@ -18,6 +18,7 @@ export default function AddNewData() {
         discount: "",
         stock: "",
         description: "",
+        descriptionShort: "",
     });
 
     const handleChange = (
@@ -57,6 +58,7 @@ export default function AddNewData() {
                 discount: "",
                 stock: "",
                 description: "",
+                descriptionShort: "",
             });
 
         } catch (error) {
@@ -224,12 +226,28 @@ export default function AddNewData() {
                         </div>
 
                     </div>
+                    {/* Short Description */}
+                    <div>
 
+                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                            Short Description
+                        </label>
+
+                        <textarea
+                            rows={2}
+                            name="descriptionShort"
+                            placeholder="Write short product description..."
+                            value={product.descriptionShort}
+                            onChange={handleChange}
+                            className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
+                        />
+
+                    </div>
                     {/* Description */}
                     <div>
 
                         <label className="mb-2 block text-sm font-medium text-gray-300">
-                            Description
+                            Full Description
                         </label>
 
                         <textarea
