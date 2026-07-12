@@ -12,6 +12,7 @@ import { usePathname } from "next/navigation";
 
 export default function Navbar() {
     const pathname = usePathname();
+    console.log(pathname)
     const { user, logout } = useAuth();
     const UserName = user?.displayName
     const [open, setOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function Navbar() {
         ? [
             { name: "Home", href: "/" },
             { name: "Products", href: "/Products" },
-            { name: "Dashboard", href: "/Dashboard" },
+            { name: "Dashboard", href: "/Dashboard/AddNew" },
             { name: "Deals Zone ", href: "/DealsZone " },
             { name: "Contact", href: "/Contact" },
         ]
@@ -38,8 +39,6 @@ export default function Navbar() {
     ]
         :
         navLinkso
-
-
 
     return (
         <div className="sticky top-0 z-50 border-b border-white/10 bg-[#030712]/80 backdrop-blur-xl">
@@ -59,7 +58,7 @@ export default function Navbar() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-sm font-medium text-gray-300 transition hover:text-(--Primary-Color)"
+                            className={`text-sm font-medium transition ${pathname === item.href ? "text-(--Primary-Color)" : "text-gray-300"} hover:text-(--Primary-Color)`}
                         >
                             {item.name}
                         </Link>
@@ -146,7 +145,7 @@ export default function Navbar() {
                             <Link
                                 key={item.name}
                                 href={item.href}
-                                className="py-3 text-gray-300 hover:text-(--Primary-Color)"
+                                className={`py-3 ${pathname === item.href ? "text-(--Primary-Color)" : "text-gray-300"} hover:text-(--Primary-Color)`}
                                 onClick={() => setOpen(false)}
                             >
                                 {item.name}
