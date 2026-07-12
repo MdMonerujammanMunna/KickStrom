@@ -18,6 +18,7 @@ import { useAuth } from "@/context/AuthContext";
 import { get, ref } from "firebase/database";
 import { db } from "@/lib/firebase";
 import NoProductsFound from "@/components/Emtey/Emtey";
+import { AlertDialogDestructive } from "@/components/DeleteBar/Delete";
 
 export default function ManageProducts() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -177,11 +178,7 @@ export default function ManageProducts() {
                                                             <button className="rounded-lg bg-blue-600 p-2 text-white transition hover:bg-blue-700">
                                                                 <Pencil size={18} />
                                                             </button>
-
-                                                            <button className="rounded-lg bg-red-600 p-2 text-white transition hover:bg-red-700">
-                                                                <Trash2 size={18} />
-                                                            </button>
-
+                                                            <AlertDialogDestructive productId={item.id} />
                                                         </div>
 
                                                     </td>
