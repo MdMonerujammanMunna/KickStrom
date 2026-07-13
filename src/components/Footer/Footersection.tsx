@@ -66,10 +66,10 @@ export default function Footer() {
                         </h3>
 
                         <div className="space-y-3 text-gray-400 flex flex-col ">
-                            <Link className="hover:text-red-500" href="#">Home</Link>
-                            <Link className="hover:text-red-500" href="#">Products</Link>
-                            <Link className="hover:text-red-500" href="#">Categories</Link>
-                            <Link className="hover:text-red-500" href="#">Contact</Link>
+                            <Link className="hover:text-red-500" href="/">Home</Link>
+                            <Link className="hover:text-red-500" href="/Products">Products</Link>
+                            {/* <Link className="hover:text-red-500" href="#">Categories</Link> */}
+                            <Link className="hover:text-red-500" href="/Contact">Contact</Link>
                         </div>
                     </div>
 

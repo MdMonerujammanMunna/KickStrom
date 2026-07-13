@@ -93,7 +93,7 @@ export default function AddNewData() {
                             <input
                                 type="text"
                                 name="name"
-                                placeholder="Nike Mercurial Vapor"
+                                // placeholder="Product Name"
                                 value={product.name}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -109,7 +109,7 @@ export default function AddNewData() {
                             <input
                                 type="text"
                                 name="brand"
-                                placeholder="Nike"
+                                // placeholder="Brand Name"
                                 value={product.brand}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -130,7 +130,7 @@ export default function AddNewData() {
                             <input
                                 type="text"
                                 name="category"
-                                placeholder="Football Boots"
+                                // placeholder="Category"
                                 value={product.category}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -146,7 +146,7 @@ export default function AddNewData() {
                             <input
                                 type="url"
                                 name="image"
-                                placeholder="https://..."
+                                // placeholder="https://..."
                                 value={product.image}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -167,7 +167,7 @@ export default function AddNewData() {
                             <input
                                 type="number"
                                 name="price"
-                                placeholder="$99"
+                                // placeholder="Price"
                                 value={product.price}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -183,9 +183,10 @@ export default function AddNewData() {
                             <input
                                 type="number"
                                 name="oldPrice"
-                                placeholder="$129"
+                                // placeholder="Old Price"
                                 value={product.oldPrice}
                                 onChange={handleChange}
+                                required
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
                             />
                         </div>
@@ -203,7 +204,8 @@ export default function AddNewData() {
                             <input
                                 type="number"
                                 name="discount"
-                                placeholder="20"
+                                required
+                                // placeholder="Discount %"
                                 value={product.discount}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -218,7 +220,8 @@ export default function AddNewData() {
                             <input
                                 type="number"
                                 name="stock"
-                                placeholder="50"
+                                required
+                                // placeholder="Stock"
                                 value={product.stock}
                                 onChange={handleChange}
                                 className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -236,7 +239,8 @@ export default function AddNewData() {
                         <textarea
                             rows={2}
                             name="descriptionShort"
-                            placeholder="Write short product description..."
+                            required
+                            // placeholder="Write short product description..."
                             value={product.descriptionShort}
                             onChange={handleChange}
                             className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"
@@ -253,7 +257,8 @@ export default function AddNewData() {
                         <textarea
                             rows={5}
                             name="description"
-                            placeholder="Write product description..."
+                            required
+                            // placeholder="Write product description..."
                             value={product.description}
                             onChange={handleChange}
                             className="w-full rounded-xl border border-gray-700 bg-[#1f2937]/80 px-4 py-3 text-white placeholder:text-gray-500 outline-none transition focus:border-red-500 focus:ring-2 focus:ring-red-500/20"

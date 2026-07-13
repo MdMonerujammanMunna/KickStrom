@@ -14,9 +14,26 @@ export default function SignInPage() {
     const [showPassword, setShowPassword] = useState(false);
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const DEMO_EMAIL = "demo@example.com";
+    const DEMO_PASSWORD = "Demo@123";
 
+    const handleDemoLogin = async () => {
+        setEmail(DEMO_EMAIL);
+        setPassword(DEMO_PASSWORD);
 
+        try {
+            await signInWithEmailAndPassword(
+                auth,
+                DEMO_EMAIL,
+                DEMO_PASSWORD
+            );
 
+            router.push("/");
+        } catch (err) {
+            const error = err as FirebaseError;
+            alert(error.message);
+        }
+    }; 
     // 
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -126,6 +143,7 @@ export default function SignInPage() {
 
                         <input
                             type="email"
+                            value={email}
                             onChange={(e) => setEmail(e.target.value)}
                             placeholder="Enter your email"
                             className="w-full rounded-lg border border-gray-700 bg-[#111827] px-4 py-3 text-white outline-none transition focus:border-red-500"
@@ -217,8 +235,15 @@ export default function SignInPage() {
                             OR
                         </span>
                     </div>
-
-
+                    {/* demo button */}
+                    <button
+                        type="button"
+                        onClick={handleDemoLogin}
+                        className="flex w-full items-center justify-center rounded-xl border border-red-500 py-3 font-semibold text-red-500 transition hover:bg-red-600 hover:text-white"
+                    >
+                        Demo Login
+                    </button>
+                    {/* demo button */}
                     <button
                         onClick={handleGoogleLogin}
                         type="button"
