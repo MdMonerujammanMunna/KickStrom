@@ -39,3 +39,48 @@
 .button:hover::before {
   width: 200%;
 }
+
+/* Simple animations used by components */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatY {
+  0% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.fade-up {
+  animation-name: fadeUp;
+  animation-duration: 700ms;
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(.2, .9, .2, 1);
+}
+
+.float-slow {
+  animation: floatY 3.5s ease-in-out infinite;
+}
+
+/* utility to stagger elements using inline style for delay */
+.appear {
+  opacity: 0;
+  transform: translateY(12px);
+  animation-fill-mode: forwards;
+}

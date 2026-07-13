@@ -24,7 +24,7 @@ export default function HomePageBanner() {
                         ⚽ New Football Collection {new Date().getFullYear()}
                     </span>
 
-                    <h1 className="mt-6 text-5xl font-extrabold leading-tight text-white md:text-6xl">
+                    <h1 className="mt-6 text-5xl font-extrabold leading-tight text-white md:text-6xl fade-up appear" style={{ animationDelay: '0.18s' }}>
                         Gear Up <br />
                         For   <br />
                         <span className="text-red-500">Every </span>
@@ -46,18 +46,19 @@ export default function HomePageBanner() {
                         </span>
                     </h1>
 
-                    <p className="mt-6 text-lg text-gray-400">
+                    <p className="mt-6 text-lg text-gray-400 fade-up appear" style={{ animationDelay: '0.34s' }}>
                         Discover premium football boots, jerseys, balls, and accessories
                         designed for champions. Shop the latest collection today.
                     </p>
 
-                    <div className="mt-8 flex  justify-center gap-4 sm:flex-row lg:justify-start">
+                    <div className="mt-8 flex  justify-center gap-4 sm:flex-row lg:justify-start fade-up appear" style={{ animationDelay: '0.5s' }}>
                         <Link
                             href="/Products"
                         >
 
                             <button
                                 className=" relative flex items-center justify-center px-8 py-4 overflow-hidden font-medium transition-all bg-red-500 rounded-md group"
+                                style={{ animationDelay: '0.6s' }}
                             >
                                 <span
                                     className="absolute top-0 right-0 inline-block w-4 h-4 transition-all duration-500 ease-in-out bg-red-700 rounded group-hover:-mr-4 group-hover:-mt-4"
@@ -86,24 +87,24 @@ export default function HomePageBanner() {
                         <Link
                             href="/Products"
                         >
-                            <button className="button">Explore Products</button>
+                            <button className="button" style={{ animationDelay: '0.72s' }}>Explore Products</button>
                         </Link>
                     </div>
 
-                    <div className="mt-10 flex justify-center gap-10 lg:justify-start ">
+                    <div className="mt-10 flex justify-center gap-10 lg:justify-start " style={{ animationDelay: '0.86s' }}>
                         <div>
-                            <h3 className="text-3xl font-bold text-white">10K+</h3>
-                            <p className="text-gray-400">Happy Customers</p>
+                            <h3 className="text-3xl font-bold text-white fade-up appear" style={{ animationDelay: '0.9s' }}>10K+</h3>
+                            <p className="text-gray-400 fade-up appear" style={{ animationDelay: '1.02s' }}>Happy Customers</p>
                         </div>
 
                         <div>
-                            <h3 className="text-3xl font-bold text-white">500+</h3>
-                            <p className="text-gray-400">Products</p>
+                            <h3 className="text-3xl font-bold text-white fade-up appear" style={{ animationDelay: '1.14s' }}>500+</h3>
+                            <p className="text-gray-400 fade-up appear" style={{ animationDelay: '1.26s' }}>Products</p>
                         </div>
 
                         <div>
-                            <h3 className="text-3xl font-bold text-white">4.9★</h3>
-                            <p className="text-gray-400">Customer Rating</p>
+                            <h3 className="text-3xl font-bold text-white fade-up appear" style={{ animationDelay: '1.38s' }}>4.9★</h3>
+                            <p className="text-gray-400 fade-up appear" style={{ animationDelay: '1.5s' }}>Customer Rating</p>
                         </div>
                     </div>
                 </div>
@@ -114,7 +115,7 @@ export default function HomePageBanner() {
                         {/* Glow */}
                         <div className="absolute inset-0 -z-10  bg-red-600/30 blur-3xl"></div>
 
-                        <div className="h-137 w-137 overflow-hidden  rounded-xl px-10">
+                        <div className="h-137 w-137 overflow-hidden  rounded-xl px-10 float-slow fade-up" style={{ animationDelay: '0.7s' }}>
                             <Swiper
                                 modules={[Autoplay]}
                                 slidesPerView={1}

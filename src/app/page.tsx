@@ -13,11 +13,11 @@ export default function Home() {
     <>
 
       <HomePageBanner />
-      <CatagorisPage />
       <FeatureBar />
-      <SeasonBanner />
+      <CatagorisPage />
       <AboutSection />
       <FAQSection />
+      <SeasonBanner />
       <BrandMarquee />
     </>
   );

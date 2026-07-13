@@ -72,7 +72,7 @@ export default function AboutSection() {
                     </div>
 
                     <Link
-                        href="/shop"
+                        href="/Products"
                         className="mt-10 inline-flex items-center gap-2 rounded-xl bg-red-600 px-7 py-4 font-semibold transition hover:bg-red-700"
                     >
                         Shop Collection
