@@ -1,12 +1,12 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ShoppingCart } from "lucide-react";
 import { onValue, ref } from "firebase/database";
-import { db } from "@/lib/firebase";
-import { useParams } from "next/navigation";
+import { auth, db } from "@/lib/firebase";
+import { useParams, useRouter } from "next/navigation";
+import { useAuth } from "@/context/AuthContext";
+import { onAuthStateChanged } from "firebase/auth";
 
 interface Product {
     id: string;
@@ -20,15 +20,32 @@ interface Product {
     stock: number;
     description: string;
     descriptionShort: string;
+    createdAt?: string;
 }
 
 
 
 export default function ProductDetailPage() {
+    const router = useRouter();
     const params = useParams();
+    const id = params.id as string;
     // console.log(params);
     const [product, setProduct] = useState<Product | null>(null);
     const [loading, setLoading] = useState(true);
+
+    const user = useAuth();
+    // console.log();
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (user) => {
+            if (!user) {
+                router.replace("/LogIn");
+            }
+        });
+
+        return () => unsubscribe();
+    }, [router]);
+
+
 
     useEffect(() => {
         const productRef = ref(db, `products/${params.id}`);
@@ -38,7 +55,7 @@ export default function ProductDetailPage() {
             (snapshot) => {
                 if (snapshot.exists()) {
                     const data = snapshot.val() as Omit<Product, "id">;
-                    setProduct({ id: params.id, ...data });
+                    setProduct({ id: id, ...data });
                 } else {
                     setProduct(null);
                 }
@@ -150,12 +167,13 @@ export default function ProductDetailPage() {
                         </p>
 
                         <p className="mt-2 text-white">
-                            {new Date(product?.createdAt).toLocaleDateString()}
+                            {product?.createdAt
+                                ? new Date(product.createdAt).toLocaleDateString()
+                                : "N/A"}
                         </p>
                     </div>
 
                 </div>
-
             </div>
 
         </div>

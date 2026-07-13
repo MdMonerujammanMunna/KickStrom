@@ -9,10 +9,11 @@ interface Product {
     category: string;
     brand: string;
     price: number;
-    oldPrice?: number;
-    discount?: number;
+    oldPrice: number;
+    discount: number;
     image: string;
 }
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { Eye, Plus } from "lucide-react";

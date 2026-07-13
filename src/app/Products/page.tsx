@@ -30,7 +30,6 @@ export default function AllProducts() {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const productsPerPage = 8;
-
     useEffect(() => {
         const productsRef = ref(db, "products");
 
