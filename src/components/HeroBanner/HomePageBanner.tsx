@@ -53,7 +53,7 @@ export default function HomePageBanner() {
 
                     <div className="mt-8 flex  justify-center gap-4 sm:flex-row lg:justify-start">
                         <Link
-                            href="/shop"
+                            href="/Products"
                         >
 
                             <button
@@ -84,7 +84,7 @@ export default function HomePageBanner() {
                         </Link>
 
                         <Link
-                            href="/products"
+                            href="/Products"
                         >
                             <button className="button">Explore Products</button>
                         </Link>

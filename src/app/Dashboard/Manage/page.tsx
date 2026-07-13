@@ -15,7 +15,7 @@ interface Product {
 }
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import { Plus } from "lucide-react";
+import { Eye, Plus } from "lucide-react";
 import Link from "next/link";
 import { useAuth } from "@/context/AuthContext";
 import { get, ref } from "firebase/database";
@@ -185,6 +185,11 @@ export default function ManageProducts() {
                                                             <div className="flex justify-center gap-3">
                                                                 <UpdateProductDialog product={item} />
                                                                 <AlertDialogDestructive productId={item.id} />
+                                                                <Link href={`/Products/${item.id}`}>
+                                                                    <button className="rounded-lg bg-green-600 p-2 text-white transition hover:bg-green-700">
+                                                                        <Eye size={18} />
+                                                                    </button>
+                                                                </Link>
                                                             </div>
 
                                                         </td>

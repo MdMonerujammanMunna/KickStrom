@@ -40,10 +40,10 @@ export default function SeasonBanner() {
                         </p>
 
                         <Link
-                            href="/shop"
+                            href="/DealsZone"
                             className="group mt-10 inline-flex items-center gap-3 rounded-xl bg-red-600 px-8 py-4 font-semibold text-white transition-all duration-300 hover:bg-red-700"
                         >
-                            Explore Collection
+                            Explore Offers
 
                             <ArrowRight
                                 size={20}

@@ -3,7 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Search } from "lucide-react";
+import { ArrowRight, Search } from "lucide-react";
 import { onValue, ref } from "firebase/database";
 import { db } from "@/lib/firebase";
 
@@ -203,7 +203,7 @@ export default function AllProducts() {
                             </p>
                         </div>
 
-                        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+                        <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
                             {paginatedProducts.map((product) => (
                                 <div
                                     key={product.id}
@@ -259,10 +259,11 @@ export default function AllProducts() {
                                         </div>
 
                                         <Link
-                                            href={`/products/${product.id}`}
-                                            className="block w-full text-center bg-red-600 hover:bg-red-700 py-3 rounded-lg text-white font-semibold duration-300"
+                                            href={`/Products/${product.id}`}
+                                            className="inline-flex items-center justify-center gap-2 w-full rounded-2xl  px-4 py-3 text-sm font-semibold text-white bg-red-500"
                                         >
                                             View Details
+                                            <ArrowRight size={16} />
                                         </Link>
                                     </div>
                                 </div>
