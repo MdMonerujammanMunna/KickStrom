@@ -4,6 +4,7 @@ import { useAuth } from "@/context/AuthContext";
 import { db } from "@/lib/firebase";
 import { push, ref } from "firebase/database";
 import { ChangeEvent, FormEvent, useState } from "react";
+import toast from "react-hot-toast";
 
 
 export default function AddNewData() {
@@ -46,7 +47,7 @@ export default function AddNewData() {
 
             // console.log("Record key:", newProductRef.key);
             // alert("Product Added Successfully!");
-
+            toast.success("Product Added Successfully!");
             // Form reset
             setProduct({
                 name: "",
@@ -62,8 +63,7 @@ export default function AddNewData() {
             });
 
         } catch (error) {
-            console.error(error);
-            alert("Failed to add product!");
+            toast.error("Failed to add product!");
         }
     };
 

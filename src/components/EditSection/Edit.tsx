@@ -18,6 +18,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/lib/firebase";
 import { ref, update } from "firebase/database";
 import { Pencil } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface Product {
     id: string;
@@ -49,10 +50,10 @@ export default function UpdateProductDialog({ product }: Props) {
             await update(ref(db, `products/${producto.id}`), {
                 ...data,
             });
+            toast.success("Product Updated Successfully!");
             window.location.reload();
         } catch (error) {
-            console.error(error);
-            alert("Update failed");
+            toast.error("Failed to update product!");
         }
     };
     return (

@@ -150,9 +150,8 @@ export default function AllProducts() {
                     >
                         <option>All</option>
                         <option>Football</option>
-                        <option>Running</option>
-                        <option>Basketball</option>
-                        <option>Cricket</option>
+                        <option>Football Boots</option>
+                        <option>Jersey</option>
                     </select>
 
                     <select

@@ -8,6 +8,7 @@ import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import toast from "react-hot-toast";
 
 type ConditionProps = {
     valid: boolean;
@@ -52,7 +53,7 @@ export default function SignUpPage() {
             await updateProfile(userCredential.user, {
                 displayName: name,
             });
-
+            toast.success("Account Created Successfully");
             router.push("/LogIn");
         }
         catch (error: any) {
@@ -67,6 +68,7 @@ export default function SignUpPage() {
 
     const handleGoogleLogin = async () => {
         await signInWithPopup(auth, provider);
+        toast.success("Account Created Successfully");
         router.push("/");
     };
 

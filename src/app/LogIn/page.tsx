@@ -8,6 +8,7 @@ import { FirebaseError } from "firebase/app";
 import { auth } from "@/lib/firebase";
 import { useRouter } from "next/navigation";
 import { FcGoogle } from "react-icons/fc";
+import toast from "react-hot-toast";
 
 export default function SignInPage() {
     const router = useRouter();
@@ -27,13 +28,13 @@ export default function SignInPage() {
                 DEMO_EMAIL,
                 DEMO_PASSWORD
             );
-
+            toast.success("Demo Account Logged In Successfully");
             router.push("/");
         } catch (err) {
             const error = err as FirebaseError;
             alert(error.message);
         }
-    }; 
+    };
     // 
 
     const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -41,10 +42,11 @@ export default function SignInPage() {
 
         try {
             await signInWithEmailAndPassword(auth, email, password);
+            toast.success("Account Logged In Successfully");
             router.push("/");
         } catch (err) {
             const error = err as FirebaseError;
-            alert(error.message);
+            toast.error(error.message);
         }
     };
 
@@ -54,6 +56,7 @@ export default function SignInPage() {
 
     const handleGoogleLogin = async () => {
         await signInWithPopup(auth, provider);
+        toast.success("Account Logged In Successfully");
         router.push("/");
     };
 

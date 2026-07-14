@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import Footer from "@/components/Footer/Footersection";
 import Navbar from "@/components/NaBar/Navbar";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
 
 const geist = Geist({
   subsets: ["latin"],
@@ -38,7 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <AuthProvider>
           <Navbar />
-
+          <Toaster />
           <main className="flex-1">
             {children}
           </main>
