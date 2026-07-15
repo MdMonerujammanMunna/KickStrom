@@ -4,7 +4,7 @@ import React from 'react';
 const CatagorisPage = () => {
     return (
         <>
-            <section className="bg-[#030712] py-20">
+            <section className="bg-[#030712] py-20 container mx-auto">
                 <div className="max-w-7xl mx-auto px-4">
 
                     <div className="text-center mb-14">

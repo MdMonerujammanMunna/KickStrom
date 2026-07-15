@@ -78,7 +78,7 @@ export default function HomePageBanner() {
                                     className="absolute bottom-0 left-0 w-full h-full transition-all duration-500 ease-in-out delay-200 -translate-x-full bg-red-600 rounded-md group-hover:translate-x-0"
                                 ></span>
                                 <span
-                                    className="relative w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white"
+                                    className="relative text-nowrap w-full text-left text-white transition-colors duration-200 ease-in-out group-hover:text-white"
                                 > Shop Now</span>
                             </button>
 
@@ -87,11 +87,11 @@ export default function HomePageBanner() {
                         <Link
                             href="/Products"
                         >
-                            <button className="button" style={{ animationDelay: '0.72s' }}>Explore Products</button>
+                            <button className="button text-nowrap" style={{ animationDelay: '0.72s' }}>Explore Products</button>
                         </Link>
                     </div>
 
-                    <div className="mt-10 flex justify-center gap-10 lg:justify-start " style={{ animationDelay: '0.86s' }}>
+                    {/* <div className="mt-10 flex justify-center gap-10 lg:justify-start " style={{ animationDelay: '0.86s' }}>
                         <div>
                             <h3 className="text-3xl font-bold text-white fade-up appear" style={{ animationDelay: '0.9s' }}>10K+</h3>
                             <p className="text-gray-400 fade-up appear" style={{ animationDelay: '1.02s' }}>Happy Customers</p>
@@ -106,7 +106,7 @@ export default function HomePageBanner() {
                             <h3 className="text-3xl font-bold text-white fade-up appear" style={{ animationDelay: '1.38s' }}>4.9★</h3>
                             <p className="text-gray-400 fade-up appear" style={{ animationDelay: '1.5s' }}>Customer Rating</p>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Right Image */}
