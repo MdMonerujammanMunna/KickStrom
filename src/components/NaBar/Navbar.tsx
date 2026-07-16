@@ -162,14 +162,14 @@ export default function Navbar() {
                                 :
                                 <div className="mt-5 flex flex-col gap-3">
                                     <Link
-                                        href="/login"
+                                        href="/LogIn"
                                         className="rounded-lg border-2 border-white/15 py-2 text-center text-white hover:border-(--Primary-Color) "
                                     >
                                         Log In
                                     </Link>
 
                                     <Link
-                                        href="/signup"
+                                        href="/SignUp"
                                         className="rounded-lg bg-(--Primary-Color) py-2 text-center font-semibold text-white"
                                     >
                                         Sign Up

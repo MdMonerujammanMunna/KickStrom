@@ -113,9 +113,9 @@ export default function HomePageBanner() {
                 <div className="flex flex-1 justify-center">
                     <div className="relative">
                         {/* Glow */}
-                        <div className="absolute inset-0 -z-10  bg-red-600/30 blur-3xl"></div>
+                        <div className="absolute inset-0 -z-10 bg-red-600/30 blur-3xl rounded-xl"></div>
 
-                        <div className="h-137 w-137 overflow-hidden  rounded-xl px-10 float-slow fade-up" style={{ animationDelay: '0.7s' }}>
+                        <div className="w-full max-w-[420px] md:max-w-[650px] overflow-hidden rounded-xl px-6 md:px-10 float-slow fade-up" style={{ animationDelay: '0.7s' }}>
                             <Swiper
                                 modules={[Autoplay]}
                                 slidesPerView={1}
@@ -135,7 +135,7 @@ export default function HomePageBanner() {
                                             width={650}
                                             height={650}
                                             priority={index === 0}
-                                            className="h-full w-full object-cover rounded-xl animate-pulse"
+                                            className="w-full h-auto object-cover rounded-xl"
                                         />
                                     </SwiperSlide>
                                 ))}
